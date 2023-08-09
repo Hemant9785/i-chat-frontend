@@ -1,4 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
+const weblink = "https://i-chat-ndi8.onrender.com/";
 import React from "react";
 import axios from "axios";
 const asyncHandler = require("express-async-handler");
@@ -72,7 +73,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/user",
+        weblink + "api/user",
         {
           name,
           email,

@@ -1,3 +1,4 @@
+const weblink = "https://i-chat-ndi8.onrender.com/";
 import {
   Box,
   Button,
@@ -58,7 +59,7 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:5000/api/user/login",
+        weblink + "api/user/login",
         { email, password },
         config
       );
@@ -114,7 +115,7 @@ const Login = () => {
       };
       await axios
         .post(
-          "http://localhost:5000/api/user/login",
+          weblink + "api/user/login",
           {
             email,
             password,

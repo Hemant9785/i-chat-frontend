@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
+
+const weblink = "https://i-chat-ndi8.onrender.com/";
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
   const toast = useToast();
@@ -26,10 +28,7 @@ const MyChats = ({ fetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(
-        "http://localhost:5000/api/chats",
-        config
-      );
+      const { data } = await axios.get(weblink + "api/chats", config);
       setChats(data);
     } catch (error) {
       console.log(error);

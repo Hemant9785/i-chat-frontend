@@ -1,4 +1,5 @@
 import { ChatState } from "@/context/chatProvider";
+const weblink = "https://i-chat-ndi8.onrender.com/";
 import {
   Box,
   Flex,
@@ -21,7 +22,7 @@ import axios from "axios";
 import ScrollableChat from "../components/ScrollableChat";
 import { io } from "socket.io-client";
 import animationData from "../animations/typing1.json";
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = weblink;
 var socket;
 var selectedChatCompare;
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -53,7 +54,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:5000/api/messages/${selectedChat._id}`,
+        `${weblink}api/messages/${selectedChat._id}`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -82,7 +83,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setNewMessage("");
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/api/messages",
+          weblink + "api/messages",
           {
             content: newMessage,
             chatId: selectedChat._id,

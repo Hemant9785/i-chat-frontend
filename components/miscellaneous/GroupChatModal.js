@@ -1,4 +1,5 @@
 import { ChatState } from "@/context/chatProvider";
+const weblink = "https://i-chat-ndi8.onrender.com/";
 import {
   Box,
   Button,
@@ -69,7 +70,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `${weblink}api/user?search=${search}`,
         config
       );
       const result = data.filter((user_) => {
@@ -97,7 +98,7 @@ const GroupChatModal = ({ children }) => {
       return;
     }
     try {
-      const url = "http://localhost:5000/api/chats/group";
+      const url = weblink + "api/chats/group";
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,

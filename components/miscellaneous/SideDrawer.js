@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchChat from "./SearchChat";
 import NotificationBadge from "react-notification-badge/lib/components/NotificationBadge";
 import { ChevronDownIcon, SearchIcon, BellIcon } from "@chakra-ui/icons";
+const weblink = "https://i-chat-ndi8.onrender.com/";
 import { Effect } from "react-notification-badge";
 import {
   Box,
@@ -79,7 +80,7 @@ const SideDrawer = () => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `${weblink}api/user?search=${search}`,
         config
       );
       setLoading(false);
@@ -103,7 +104,7 @@ const SideDrawer = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:5000/api/chats",
+        weblink + "api/chats",
         { userId },
         config
       );

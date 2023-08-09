@@ -32,7 +32,8 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   //   console.log(selectedChat.users);
   const [loading, setLoading] = useState(false);
-  const url = "http://localhost:5000/api/chats/";
+  const weblink = "https://i-chat-ndi8.onrender.com/";
+  const url = weblink + "api/chats/";
   const aise_hi_func = () => {};
   const handleSearch = async (e) => {
     setSearch(e.target.value);
@@ -45,7 +46,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:5000/api/user?search=${search}`,
+        `${weblink}api/user?search=${search}`,
         config
       );
       const result = data.filter((user_) => {
@@ -96,7 +97,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
       };
       const x = { chatId: selectedChat._id, chatName: selectedChat.chatName };
       const { data } = await axios.put(
-        "http://localhost:5000/api/chats/rename",
+        weblink + "api/chats/rename",
         {
           chatId: selectedChat._id,
           chatName: name,
