@@ -19,6 +19,7 @@ import { Toast } from "@chakra-ui/react";
 // import { useHistory } from "react-router-dom";
 // import { createHashHistory } from "history";
 import { useNavigate } from "react-router-dom";
+import { ChatState } from "@/context/chatProvider";
 
 const Login = () => {
   // const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setshowPassword] = useState(false);
+  const { setUser } = ChatState();
 
   const handlePasswordVisibility = () => {
     setshowPassword(!showPassword);
@@ -73,6 +75,7 @@ const Login = () => {
         isClosable: true,
         position: "bottom",
       });
+      setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
       router.replace("/chats");
@@ -82,7 +85,7 @@ const Login = () => {
       // console.log(error);
       toast({
         title: "Error Occured!",
-        description: "e",
+        description: error.response.data.message,
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -133,7 +136,7 @@ const Login = () => {
           });
           // console.log(1);
           // console.log(history);
-
+          setUser(data);
           localStorage.setItem("userInfo", JSON.stringify(data));
 
           setLoading(false);
@@ -172,7 +175,7 @@ const Login = () => {
             />
           </FormControl>
 
-          <FormControl mt={6} isRequired={true}>
+          <FormControl id="password" mt={6} isRequired={true}>
             <FormLabel>Password</FormLabel>
             <InputGroup>
               <Input

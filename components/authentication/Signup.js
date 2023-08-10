@@ -31,15 +31,17 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setshowPassword] = useState(false);
   const [showConfirmPassword, setshowConfirmPassowrd] = useState(false);
-  const [pic, setPic] = useState("");
+  const [picture, setPicture] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [picLoading, setPicLoading] = useState(false);
 
   const submitHandler = asyncHandler(async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setPicLoading(true); //** */
+    // setLoading(true); //changed
     if (!name || !password || !confirmPassword || !email) {
       toast({
         title: "Enter all Fields",
@@ -49,7 +51,8 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
+      setPicLoading(false);
+      // setLoading(false);
       return;
     }
 
@@ -62,7 +65,7 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
-      setLoading(false);
+      // setLoading(false);
       return;
     }
 
@@ -78,6 +81,7 @@ const Signup = () => {
           name,
           email,
           password,
+          picture,
         },
         config
       );
@@ -89,7 +93,8 @@ const Signup = () => {
         position: "bottom",
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
+      setPicLoading(false);
+      // setLoading(false);
       router.replace("/chats");
       // history?.push("/api/chats");
     } catch (error) {
@@ -114,7 +119,8 @@ const Signup = () => {
   };
 
   async function postDetails(imageFile) {
-    setLoading(true);
+    // setLoading(true);
+    setPicLoading(true);
     if (!imageFile) {
       toast({
         title: "Select a image",
@@ -138,9 +144,10 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setPic(data.url.toString());
+        setPicture(data.url.toString());
         console.log(data.url.toString());
-        setLoading(false);
+        // setLoading(false);
+        setPicLoading(false);
         toast({
           title: "Success",
           description: "Sucess",
@@ -152,7 +159,8 @@ const Signup = () => {
       })
       .catch((err) => {
         console.log(err);
-        setLoading(false);
+        // setLoading(false);
+        setPicLoading(false);
       });
 
     // console.log(response.json());

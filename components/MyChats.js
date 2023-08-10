@@ -31,7 +31,7 @@ const MyChats = ({ fetchAgain }) => {
       const { data } = await axios.get(weblink + "api/chats", config);
       setChats(data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast({
         title: "Error Occured!",
         description: "Failed to Load the chats",
@@ -59,8 +59,6 @@ const MyChats = ({ fetchAgain }) => {
       borderRadius="lg"
       borderWidth="1px"
       // borderWidth={"10px"}
-      borderColor="red"
-      h={"625px"}
     >
       <Box
         pb={3}
@@ -71,8 +69,6 @@ const MyChats = ({ fetchAgain }) => {
         w="100%"
         justifyContent="space-between"
         alignItems="center"
-        borderWidth={"5px"}
-        borderColor="blue"
         // h={"0%"}
       >
         My Chats
@@ -93,17 +89,14 @@ const MyChats = ({ fetchAgain }) => {
         bg="#F8F8F8"
         w="100%"
         borderRadius="lg"
-        overflowY="scroll"
-        borderWidth={"5px"}
-        borderColor="yellow"
-        h={"90%"}
+        overflowY="hidden"
+        h="100%"
         // h={"80vh"}
       >
         {chats ? (
           <Stack
             // h={"100%"}
-            borderWidth={"3px"}
-            borderColor="red"
+
             overflowY="scroll"
           >
             {chats.map((chat) => (
