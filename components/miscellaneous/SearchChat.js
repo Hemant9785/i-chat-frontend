@@ -1,6 +1,7 @@
 import { Box, HStack, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { Avatar } from "@chakra-ui/avatar";
+let weblink;
 
 const SearchChat = ({ user, handleFunction }) => {
   return (

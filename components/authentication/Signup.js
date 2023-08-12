@@ -1,5 +1,8 @@
 import { Box, Flex } from "@chakra-ui/react";
-const weblink = "https://i-chat-ndi8.onrender.com/";
+// let weblink;
+let weblink = "https://i-chat-ndi8.onrender.com/";
+import { useContext } from "react";
+import backEndContext from "@/context/backendContext";
 import React from "react";
 import axios from "axios";
 const asyncHandler = require("express-async-handler");
@@ -19,6 +22,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useRouter } from "next/router";
 const Signup = () => {
+  const bec = useContext(backEndContext);
+  weblink = bec.weblink;
   const router = useRouter();
   // const history = useHistory();
   const CLOUDINARY_API_KEY = "745612179691374";

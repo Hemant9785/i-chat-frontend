@@ -1,5 +1,6 @@
 import { ChatState } from "@/context/chatProvider";
 import { AddIcon } from "@chakra-ui/icons";
+let weblink;
 import { Box, Button, Flex, Stack, Text, useToast } from "@chakra-ui/react";
 import React from "react";
 import ChatLoading from "./ChatLoading";
@@ -8,8 +9,12 @@ import { useState } from "react";
 import axios from "axios";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
 
-const weblink = "https://i-chat-ndi8.onrender.com/";
+weblink = "https://i-chat-ndi8.onrender.com/";
+import { useContext } from "react";
+import backEndContext from "@/context/backendContext";
 const MyChats = ({ fetchAgain }) => {
+  const bec = useContext(backEndContext);
+  weblink = bec.weblink;
   const [loggedUser, setLoggedUser] = useState();
   const toast = useToast();
   const { user, setChats, chats, selectedChat, setSelectedChat } = ChatState();

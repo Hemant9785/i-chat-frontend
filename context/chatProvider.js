@@ -1,7 +1,9 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useHistory } from "react-router-dom";
+
 const chatContext = createContext();
+
 const ChatProvider = ({ children }) => {
   const router = useRouter();
   const [notifications, setNotifications] = useState([]);

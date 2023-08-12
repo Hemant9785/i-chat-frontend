@@ -1,5 +1,8 @@
 import { ChatState } from "@/context/chatProvider";
-const weblink = "https://i-chat-ndi8.onrender.com/";
+let weblink;
+weblink = "https://i-chat-ndi8.onrender.com/";
+import { useContext } from "react";
+import backEndContext from "@/context/backendContext";
 import {
   Box,
   Button,
@@ -23,8 +26,11 @@ import axios from "axios";
 import React, { useState } from "react";
 import SearchChat from "./SearchChat";
 import UserBadgeList from "./UserBadgeList";
+import backendState from "@/context/BackendState";
 
 const GroupChatModal = ({ children }) => {
+  const bec = useContext(backEndContext);
+  weblink = bec.weblink;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [chatName, setName] = useState("");
   const [search, setSearch] = useState();

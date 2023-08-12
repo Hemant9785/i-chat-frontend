@@ -1,5 +1,6 @@
 import { ChatState } from "@/context/chatProvider";
 import axios from "axios";
+let weblink;
 import { InfoIcon, SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -21,6 +22,8 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import SearchChat from "./miscellaneous/SearchChat";
+import { useContext } from "react";
+import backEndContext from "@/context/backendContext";
 
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
   const toast = useToast();
@@ -32,10 +35,15 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   //   console.log(selectedChat.users);
   const [loading, setLoading] = useState(false);
-  const weblink = "https://i-chat-ndi8.onrender.com/";
-  const url = weblink + "api/chats/";
+  weblink = "https://i-chat-ndi8.onrender.com/";
+
+  url = weblink + "api/chats/";
   const aise_hi_func = () => {};
   const handleSearch = async (e) => {
+    const bec = useContext(backEndContext);
+    weblink = bec.weblink;
+    url = weblink + "api/chats/";
+
     setSearch(e.target.value);
     if (!search) return;
     try {

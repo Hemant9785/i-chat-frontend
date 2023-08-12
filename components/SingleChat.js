@@ -1,5 +1,6 @@
 import { ChatState } from "@/context/chatProvider";
-const weblink = "https://i-chat-ndi8.onrender.com/";
+let weblink;
+weblink = "https://i-chat-ndi8.onrender.com/";
 import {
   Box,
   Flex,
@@ -22,10 +23,14 @@ import axios from "axios";
 import ScrollableChat from "../components/ScrollableChat";
 import { io } from "socket.io-client";
 import animationData from "../animations/typing1.json";
+import { useContext } from "react";
+import backEndContext from "@/context/backendContext";
 const ENDPOINT = weblink;
 var socket;
 var selectedChatCompare;
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
+  const bec = useContext(backEndContext);
+  weblink = bec.weblink;
   const defaultOptions = {
     loop: true,
     autoplay: true,

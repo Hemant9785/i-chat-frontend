@@ -1,4 +1,4 @@
-const weblink = "https://i-chat-ndi8.onrender.com/";
+let weblink = "https://i-chat-ndi8.onrender.com/";
 import {
   Box,
   Button,
@@ -20,8 +20,14 @@ import { Toast } from "@chakra-ui/react";
 // import { createHashHistory } from "history";
 import { useNavigate } from "react-router-dom";
 import { ChatState } from "@/context/chatProvider";
-
+import { useContext } from "react";
+import backEndContext from "@/context/backendContext";
 const Login = () => {
+  console.log("hemant");
+  const bec = useContext(backEndContext);
+  console.log(bec);
+  weblink = bec.weblink;
+
   // const navigate = useNavigate();
   const router = useRouter();
   const toast = useToast();
@@ -85,7 +91,7 @@ const Login = () => {
       // console.log(error);
       toast({
         title: "Error Occured!",
-        description: error.response.data.message,
+        description: "error",
         status: "error",
         duration: 5000,
         isClosable: true,

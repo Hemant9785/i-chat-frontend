@@ -1,3 +1,4 @@
+let weblink;
 import {
   isLastMessage,
   isSameSender,

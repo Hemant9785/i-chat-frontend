@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+let weblink;
 import SearchChat from "./SearchChat";
 import NotificationBadge from "react-notification-badge/lib/components/NotificationBadge";
 import { ChevronDownIcon, SearchIcon, BellIcon } from "@chakra-ui/icons";
-const weblink = "https://i-chat-ndi8.onrender.com/";
+weblink = "https://i-chat-ndi8.onrender.com/";
 import { Effect } from "react-notification-badge";
+
 import {
   Box,
   Button,
@@ -16,6 +18,8 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { Tooltip } from "@chakra-ui/react";
+import { useContext } from "react";
+import backEndContext from "@/context/backendContext";
 import {
   Drawer,
   DrawerBody,
@@ -43,6 +47,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import ChatLoading from "../ChatLoading";
 const SideDrawer = () => {
+  const bec = useContext(backEndContext);
+  weblink = bec.weblink;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     notifications,
